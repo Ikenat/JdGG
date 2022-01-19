@@ -1,4 +1,5 @@
-# test
+# JdGG
+est un site répértiorant tout les champions de league of legends, le classement du jeux, les items a prendre ou encore les runes
 
 ## Build Setup
 
