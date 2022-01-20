@@ -1,0 +1,20 @@
+.layout {
+    position: relative;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+    grid-template-areas: 
+		"navBar . . . main main main main main main . ." 
+}
+
+.navbar {
+    grid-area: navBar;
+    position: fixed;
+    height: 100vh;
+    width: max(100px, calc(100vw / 6));
+}
+
+.main-content {
+    grid-area: main;
+}
