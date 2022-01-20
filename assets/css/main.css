@@ -12,7 +12,7 @@
     --alt-hue-color: 0
     /*===Black===*/
     --black-color: hsl(var(--hue-color), 4%, 4%);
-    --black-color-alt: hsl(var(--hue-color), 4%, 8%);
+    --black-color-alt: hsl(267 , 0%, 22%);
     /*===Fonts===*/
     --main-font-color: hsl(var(--hue-color), 0%, 22%);
     --alt-font-color: hsl(var(--hue-color), 0%, 60%);
@@ -22,8 +22,8 @@
     --main-color-hover: hsl(var(--hue-color), 100%, 69%);
     --main-color-light: hsl(var(--hue-color), 100%, 86%);
     --card-color: hsl(var(--hue-color), 0%, 100%);
-    --card-variation-color:(hsl(var(--hue-color), 33%, 97%))
-    --body-color: hsl(var(--hue-color), 100%, 97%);
+    --card-variation-color:(hsl(var(--hue-color), 33%, 97%));
+    --body-color: hsl(var(--hue-color), 100%, 96%);
 
     /*===Other Color ===*/
 
@@ -70,9 +70,6 @@
 /*========Media queries DarkMode========*/
 [data-theme = dark] {
     --alt-hue-color: 230;
-    /*===Black===*/
-    --black-color: hsl(var(--hue-color), 4%, 4%);
-    --black-color-alt: hsl(var(--hue-color), 4%, 8%);
     /*===Fonts===*/
     --main-font-color: hsl(var(--hue-color), 0%, 100%);
 
@@ -85,9 +82,6 @@
 
 [data-theme = blue] {
     --alt-hue-color: 210;
-    /*===Black===*/
-    --black-color: hsl(var(--hue-color), 4%, 4%);
-    --black-color-alt: hsl(var(--hue-color), 4%, 8%);
     /*===Fonts===*/
     --main-font-color: hsl(var(--hue-color), 0%, 100%);
 

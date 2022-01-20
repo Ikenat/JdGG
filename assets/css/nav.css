@@ -21,6 +21,32 @@
     padding: 10px 14px;
 }
 
+
+.sidebar.close {
+    border-radius: 0 30px 30px 0;
+}
+
+.sidebar header {
+    position: relative;
+}
+.sidebar.close {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sidebar .shrink {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    transform: rotate(180deg);
+    background-color: var(--black-color-alt);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+
 .image-wrapper {
     display: flex;
 }
@@ -30,22 +56,28 @@
     align-items: center;
 }
 
+.navLink .image img {
+    width: min(100px, 90%);
+}
+
 .sidebar .menu-wrapper {
     height: calc(100% - 110px);
     justify-content: space-between;
 }
 
 /*====switch theme css=====*/
-
+.sidebar:not(.close) .bottom-content {
+    width: 100%;
+}
 .menu-wrapper .mode {
     background-color: var(--main-color-light);
     width: 100%;
     height: 100%;
+    justify-content: space-around;
 }
 
 .menu-wrapper .mode p.text {
-    padding-right: var(--m-0-5);
-    color: var(--main-font-color);
+    color: #27241D;
 }
 .menu-wrapper .mode .moon-sun{
     width: 50px;
@@ -61,36 +93,53 @@
 }
 
 .menu-wrapper .mode .toggle-switch{
-    height: 100%;
+    min-height: 80px;
     min-width: 60px;
 }
 
-.toggle-switch .switch {
-    position: relative;
-    height: 22px;
-    width: 44px;
-    border-radius: 30px;
-    background-color: var(--alt-font-color);
-}
-
-.switch::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 5px;
-    height: 15px;
-    width: 15px;
-    border-radius: 15px;
-    background-color: white;
-}
 
 /*====Links css=====*/
 
-.links, .mode {
-    padding-left: var(--m-1-5);
-}
 
 .nav-links {
     margin-top: var(--m-2);
+    border-radius: 15px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    min-width: 50px;
+}
+
+.sidebar.close .nav-links {
+    justify-content: center;
+    position: relative;
+    transition: 0.2s ease;
+}
+
+.sidebar:not(.close) .nav-links p.text{
+    position: relative;
+}
+
+.sidebar:not(.close) .nav-links p.text::after{
+    content: "";
+    bottom: -5px;
+    left: 0;
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 0;
+    transition: 0.3s linear;
+}
+.sidebar:not(.close) .nav-links:hover p.text::after{
+    width: 100%;
+}
+
+.sidebar.close .nav-links:hover {
+    background-color: var(--main-color-hover);
+}
+
+/* ===Anime svg ===*/
+
+svg .svgCircle{
+	transition: all 0.5s ease-out;
 }
