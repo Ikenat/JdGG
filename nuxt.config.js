@@ -34,12 +34,27 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    'nuxt-vite'
+    'nuxt-vite',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
+
+  axios: {
+    baseURL: 'http://localhost:3000', // Used as fallback if no runtime config is provided
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': {
+      target: "https://ddragon.leagueoflegends.com/cdn/12.2.1/data/fr_FR/",
+      pathRewrite: {"^/api/": ""}
+    }
+  },
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

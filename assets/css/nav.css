@@ -23,7 +23,7 @@
 
 
 .sidebar.close {
-    border-radius: 0 30px 30px 0;
+    border-radius: 0 var(--big-border-radius) var(--big-border-radius) 0;
 }
 
 .sidebar header {
@@ -69,11 +69,19 @@
 .sidebar:not(.close) .bottom-content {
     width: 100%;
 }
+
+.sidebar.close .mode {
+    border-radius: var(--default-border-radius);
+}
+
+
 .menu-wrapper .mode {
     background-color: var(--main-color-light);
     width: 100%;
     height: 100%;
-    justify-content: space-around;
+}
+.sidebar:not(.close) .menu-wrapper .mode {
+    padding-left: 20px;
 }
 
 .menu-wrapper .mode p.text {
@@ -103,7 +111,7 @@
 
 .nav-links {
     margin-top: var(--m-2);
-    border-radius: 15px;
+    border-radius: var(--default-border-radius);
     min-height: 50px;
     display: flex;
     align-items: center;
@@ -136,6 +144,7 @@
 
 .sidebar.close .nav-links:hover {
     background-color: var(--main-color-hover);
+    cursor: pointer;
 }
 
 /* ===Anime svg ===*/

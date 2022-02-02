@@ -43,17 +43,6 @@
                         <img class="mode-icon" :src="dataTheme.svgPath" alt="moon icon">
                     </div>
                     <p class="text" v-if="!shrink">{{dataTheme.ThemeName}}</p>
-
-                    <div class="toggle-switch flex center" v-if="!shrink">
-                        <div class="toggle-wrapper">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1.69482" y="46.7797" width="56.6102" height="8.47458" rx="4.23729" fill="#383838"/>
-                                <rect x="31.7461" y="3.38983" width="56.6102" height="8.47458" rx="4.23729" transform="rotate(60 31.7461 3.38983)" fill="#383838"/>
-                                <rect y="52.4157" width="56.6102" height="8.47458" rx="4.23729" transform="rotate(-60 0 52.4157)" fill="#383838"/>
-                                <circle class="svgCircle" cx="5.9685" cy="51.0531" r="3.55933" fill="white"/>
-                            </svg>
-                        </div>
-                    </div>
                 </button>
             </div>
         </div>
@@ -97,23 +86,6 @@ export default {
         switchTheme() {
             let body = document.body
             let theme = body.getAttribute("data-theme") 
-            if(!this.shrink) {
-                let circle = document.querySelector(".svgCircle")
-                switch(theme) {
-                    case "dark" :
-                        circle.setAttribute('cx', '30.0774');
-                        circle.setAttribute('cy', '10.23');
-                        break
-                    case "blue" :
-                        circle.setAttribute('cx', '5.9685');
-                        circle.setAttribute('cy', '51.0531');
-                        break;
-                    default: 
-                        circle.setAttribute('cx', '54.1038');
-                        circle.setAttribute('cy', '51.0531');
-                        break;
-                }
-            }
             switch(theme) {
                     case "dark" :
                         body.setAttribute("data-theme", "blue");
