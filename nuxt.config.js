@@ -49,9 +49,15 @@ export default {
   },
 
   proxy: {
-    '/api/': {
+    '/api-static/': {
       target: "https://ddragon.leagueoflegends.com/cdn/12.2.1/data/fr_FR/",
-      pathRewrite: {"^/api/": ""}
+      pathRewrite: {"^/api-static/": ""}
+    },
+    '/api-dynamic/': {
+      target: "https://euw1.api.riotgames.com/lol/",
+      pathRewrite: {
+        "^/api-dynamic/": ""
+      }
     }
   },
 

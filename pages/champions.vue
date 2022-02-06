@@ -8,11 +8,11 @@
       </p>
     </div>
     <div class="sort-bar flex">
-      <div class="search-bar">
+      <div class="search-bar flex center" @click="Focus('searchbar')">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M28.5878 25.1572H26.781L26.1407 24.5397C28.3819 21.9325 29.7313 18.5477 29.7313 14.8656C29.7313 6.65523 23.076 0 14.8656 0C6.65523 0 0 6.65523 0 14.8656C0 23.076 6.65523 29.7313 14.8656 29.7313C18.5477 29.7313 21.9325 28.3819 24.5397 26.1407L25.1572 26.781V28.5878L36.5923 40L40 36.5923L28.5878 25.1572ZM14.8656 25.1572C9.17096 25.1572 4.57404 20.5603 4.57404 14.8656C4.57404 9.17096 9.17096 4.57404 14.8656 4.57404C20.5603 4.57404 25.1572 9.17096 25.1572 14.8656C25.1572 20.5603 20.5603 25.1572 14.8656 25.1572Z" fill="#989898"/>
+          <path d="M28.5878 25.1572H26.781L26.1407 24.5397C28.3819 21.9325 29.7313 18.5477 29.7313 14.8656C29.7313 6.65523 23.076 0 14.8656 0C6.65523 0 0 6.65523 0 14.8656C0 23.076 6.65523 29.7313 14.8656 29.7313C18.5477 29.7313 21.9325 28.3819 24.5397 26.1407L25.1572 26.781V28.5878L36.5923 40L40 36.5923L28.5878 25.1572ZM14.8656 25.1572C9.17096 25.1572 4.57404 20.5603 4.57404 14.8656C4.57404 9.17096 9.17096 4.57404 14.8656 4.57404C20.5603 4.57404 25.1572 9.17096 25.1572 14.8656C25.1572 20.5603 20.5603 25.1572 14.8656 25.1572Z" fill="#8d9ec7"/>
         </svg>
-        <input type="text" v-model="NameSearch" @change="SearchByName">
+        <input ref="searchbar" type="text" placeholder="Search..." v-model="NameSearch" @change="filterChampion">
       </div>
       <div class="sort-by-role">
         <button v-for="(role, index) in roles" :key=index class="role" :class="role.name"  @click="SelectRole($event, role)" v-bind:id="role.name">
@@ -24,15 +24,22 @@
           <p>{{role.name}}</p>
         </button>
       </div>
-      <div class="sort-by-dropdown">
+      <div class="sort-by-dropdown flex center" @click="Focus('SortBy')">
+        <select ref="SortBy" name="sort" id="Sort-select" @change="filterChampion" v-model="SortBy">
+          <option value="" selected disabled hidden>Trié Par</option>
+          <option value="NameUp">Name &#8595 </option>
+          <option value="NameDown">Name &#8593</option>
+          <option value="DifficultyUp">Difficulty &#8595</option>
+          <option value="DifficultyDown">Difficulty &#8593</option>
+        </select>
+        <svg class="custom-arrow" width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 23L0.00961876 0.5L25.9904 0.5L13 23Z" fill="#8d9ec7"/>
+        </svg>
 
       </div>
     </div>
     <div class="champions-layout" v-if="!isFetching">
-      <nuxt-link  to="/" class="champion-card" :class="index" v-for="(champion, index) in SearchByName()" v-bind:key="index" v-show="champion.tags.includes(roleSelected) || roleSelected === 'all' || NameSearch === index ">
-        <img :src="championLink(index)" :alt="index">
-        <h2 class="Champion-name">{{ champion.name }}</h2>
-      </nuxt-link>
+      <ChampionCard :championFiltered="champion" :link="championLink(index)" class="champion-card" v-for="(champion, index) in filterChampion()" v-bind:key="index" v-show="champion.tags.includes(roleSelected) || roleSelected === 'all' || NameSearch === index "/>
     </div>
   </div>
 </template>
@@ -44,6 +51,7 @@ export default {
     return {
       NameSearch: "",
       roleSelected: "all",
+      SortBy:"",
       champions: {},
       isFetching: true,
       roles: [
@@ -83,15 +91,60 @@ export default {
     ButtonAll.classList.add('active')
   },
   methods: {
-     SearchByName() {
+    Focus(elementToFocus) {
+      this.$nextTick(() => {
+        switch (elementToFocus) {
+        case 'searchbar' : 
+          this.$refs.searchbar.focus();
+          break;
+        case 'SortBy' : 
+          break;
+        default :
+          break;
+        }
+      }
+      )
+    },
+    SortChampions(toFilter) {
+      Object.filterReverse = (obj) => 
+      Object.keys(obj)
+            .reverse()
+            .reduce( (result, index) => (result[index] = obj[index], result), {})
+
+      Object.filter = (obj) => 
+      Object.keys(obj)
+            .sort()
+            .reduce( (result, index) => (result[index] = obj[index], result), {})
+
+      Object.difficulty = (obj) => {
+        Object.entries(obj).forEach(element => {
+        })
+      }
+      
+
+      if(this.$refs.SortBy.value === "NameDown") {
+        var filtered = Object.filterReverse(toFilter)
+      } else {
+        var filtered = Object.filter(toFilter)
+      }
+
+      return filtered;
+    },
+     SearchByName(toFilter) {
       Object.filter = (obj) => 
       Object.keys(obj)
             .filter(index => obj[index].name.toLowerCase().includes(this.NameSearch.toLowerCase()))
-            .reduce( (callback, index) => (callback[index] = obj[index], callback), {})
+            .reduce( (result, index) => (result[index] = obj[index], result), {})
 
-      var filtered = Object.filter(this.champions.data); 
-      console.log(filtered);
+      var filtered = Object.filter(toFilter); 
       return filtered
+    },
+    filterChampion() {
+      var toFilter = this.champions.data
+
+      toFilter = this.SearchByName(toFilter)
+      toFilter = this.SortChampions(toFilter)
+      return toFilter
     },
     championLink(name) {
       return "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + name + "_0.jpg"
@@ -107,12 +160,11 @@ export default {
       buttonClicked.classList.add('active')
 
       this.roleSelected = buttonClicked.classList.contains('Tous') ? 'all' : buttonClicked.classList[1];
-      console.log(this.roleSelected);
     }
   },
   async fetch () {
     let url = 'champion.json';
-    return this.$axios.$get( '/api/' + url ).then((result) => {
+    return this.$axios.$get( '/api-static/' + url ).then((result) => {
       this.champions = result;
       this.isFetching = false;
     }).catch((err) => {

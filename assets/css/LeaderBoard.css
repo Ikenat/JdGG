@@ -1,0 +1,95 @@
+.leaderboard-wrapper {
+    background-color: white;
+    border-radius: var(--big-border-radius);
+    box-shadow: var(--big-drop-shadow);
+    padding: var(--m-2);
+    margin: var(--m-1-5) 0;
+}
+
+.profil-card {
+    background-color: var(--card-variation-color);
+    border-radius: var(--default-border-radius);
+    margin-bottom: var(--m-1-5);
+    transition: all 0.1s ease-in-out;
+}
+
+.profil-card:hover {
+    background-color: var(--main-color);
+}
+
+.profil-card:hover p{
+    color: white;
+}
+
+.profil-card:hover p.summonerName {
+    text-decoration: underline;
+}
+
+
+.profil-card img:not(.tier) {
+    height: 60px;
+    width: 60px;
+}
+
+.tier {
+    width: 40px;
+    height: 40px;
+}
+
+.card {
+    justify-content: space-between;
+    padding: var(--m-0-5);
+}
+
+.header-card {
+    width: 30%;
+}
+
+.header-card > * {
+    padding-left: var(--m-1-5);
+}
+
+.header-card .rank {
+    width: 40px;
+}
+
+.summoner-info img{
+    border-radius: 100%;
+    margin-right: var(--m-1-5);
+}
+
+.winrate {
+    width: 30%;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: var(--m-1-5);
+}
+
+.graph {
+    height: 15px;
+    min-width: 100px;
+    border-radius: var(--default-border-radius);
+}
+
+.winrate-bar {
+    background-color: var(--red);
+    border-radius: var(--default-border-radius) 0 0 var(--default-border-radius);
+}
+
+.losserate-bar {
+    background-color: var(--blue);
+    border-radius: 0 var(--default-border-radius) var(--default-border-radius) 0;
+}
+
+
+
+.thead {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: var(--m-1);
+}
+
+.thead p {
+    width: 30%;
+    color: var(--alt-font-color);
+}

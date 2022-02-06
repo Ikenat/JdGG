@@ -25,7 +25,7 @@
             <div class="menu">
                 <ul class="menu-links">
                     <li v-for="(link, index) in links" v-bind:key="index" class="nav-links">
-                        <NuxtLink to="/">
+                        <NuxtLink :to="link.name">
                         <div class="links flex vertical-center">
                             <img :src="link.path" alt="Chat">
                             <div class="header-text" v-if="!shrink">

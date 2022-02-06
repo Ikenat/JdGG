@@ -1,5 +1,5 @@
 <template>
-  <Champions/>
+  <div>hello</div>
 </template>
 
 <script>
