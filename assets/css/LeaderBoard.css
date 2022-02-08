@@ -11,9 +11,10 @@
     border-radius: var(--default-border-radius);
     margin-bottom: var(--m-1-5);
     transition: all 0.1s ease-in-out;
+    width: 100%;
 }
 
-.profil-card:hover {
+.profil-card:hover, .profil-card:focus-visible {
     background-color: var(--main-color);
 }
 
@@ -58,14 +59,14 @@
     margin-right: var(--m-1-5);
 }
 
-.winrate {
+.winrate:not(.footer-card-TopServeur) {
     width: 30%;
     justify-content: space-between;
     align-items: center;
     padding-right: var(--m-1-5);
 }
 
-.graph {
+.graph:not(.TopServeur) {
     height: 15px;
     min-width: 100px;
     border-radius: var(--default-border-radius);
@@ -73,12 +74,12 @@
 
 .winrate-bar {
     background-color: var(--red);
-    border-radius: var(--default-border-radius) 0 0 var(--default-border-radius);
+    border-radius: 1000px 0 0 1000px;
 }
 
 .losserate-bar {
     background-color: var(--blue);
-    border-radius: 0 var(--default-border-radius) var(--default-border-radius) 0;
+    border-radius: 0 1000px 1000px 0;
 }
 
 
@@ -92,4 +93,10 @@
 .thead p {
     width: 30%;
     color: var(--alt-font-color);
+}
+
+
+.leaguepoint p span {
+    font-weight: 300;
+    font-style: italic;
 }

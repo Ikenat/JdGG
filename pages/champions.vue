@@ -29,8 +29,6 @@
           <option value="" selected disabled hidden>Trié Par</option>
           <option value="NameUp">Name &#8595 </option>
           <option value="NameDown">Name &#8593</option>
-          <option value="DifficultyUp">Difficulty &#8595</option>
-          <option value="DifficultyDown">Difficulty &#8593</option>
         </select>
         <svg class="custom-arrow" width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M13 23L0.00961876 0.5L25.9904 0.5L13 23Z" fill="#8d9ec7"/>

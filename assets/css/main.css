@@ -2,6 +2,7 @@
 @import "layout.css";
 @import "champions.css";
 @import "LeaderBoard.css";
+@import "TopServeurCard.css";
 
 /*=================Fonts=================*/
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
@@ -70,8 +71,9 @@
     /*========Shadow========*/
     --drop-shadow: 4px 4px 4px rgba(174, 174, 192, 25%);
     --big-drop-shadow: 10px 10px 30px rgba(174, 174, 192, 25%);
+    --reverse-big-drop-shadow: -10px -10px 30px rgba(174, 174, 192, 25%);
     --vertical-drop-shadow: 0px 4px 4px rgba(174, 174, 192, 25%);
-    --white-drop-shadow: 4px 4px 4px #fff;
+    --white-drop-shadow: 4px 4px 4px hsla(0, 0%, 100%, 0.25);
 
     /*========Media queries Typography========*/
 }

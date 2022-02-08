@@ -1,5 +1,10 @@
 <template>
-<div class="leaderboard-wrapper">
+<div class="leaderboard-wrapper flex column center">
+    <div class="Top-wrapper flex">
+        <div v-for="(profil, index) in SlicedLeaderBoard(this.leaderboard, 0, 3)" :key="index" class="profil-card-TopServeur" v-bind:class="{ 'First-Serveur': index == 0 }">
+          <ProfilTopMondial :profil=profil :rank="parseInt(index)"  />
+        </div>
+    </div>
     <div class="thead flex">
         <p class="flex center">
             Summoner
@@ -11,14 +16,16 @@
             Winrate
         </p>
     </div>
-    <div v-for="(profil, index) in this.leaderboard" :key="index" class="profil-card">
-        <ProfilLeaderBoard :profil=profil :rank="index + 1" v-if="index < 20" />
+    <div v-for="(profil, index) in SlicedLeaderBoard(this.leaderboard, 3, 20)" :key="index" class="profil-card">
+        <ProfilLeaderBoard :profil=profil :rank="parseInt(index)" />
     </div>
 </div>
 </template>
 
 <script>
+import ProfilTopMondial from '../components/ProfilTopMondial.vue';
 export default {
+  components: { ProfilTopMondial },
   name: 'LeaderBoard',
   data() {
     return {
@@ -27,8 +34,11 @@ export default {
     }
   },
   methods: {
-      SlicedLeaderBoard(obj) {
-          let slice = Object.keys(obj).slice(0, 20).reduce((result, key) => {
+    getrank(rank) {
+      return 'rank-' + rank
+    },
+    SlicedLeaderBoard(obj, min, max) {
+          let slice = Object.keys(obj).slice(min, max).reduce((result, key) => {
               result[key] = obj[key];
 
               return result
@@ -38,7 +48,7 @@ export default {
       }
   },
   async fetch () {
-      let apikey = "&api_key=RGAPI-3bdb54f7-4597-45e2-838b-b9b787ce73fd"
+      let apikey = "&api_key=RGAPI-de9ee293-0da0-4de9-9448-1d1756f008d4"
     let url = 'league-exp/v4/entries/RANKED_SOLO_5x5/CHALLENGER/I?page=1';
     return this.$axios.$get( '/api-dynamic/' + url + apikey ).then((result) => {
       this.leaderboard = result;

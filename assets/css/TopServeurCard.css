@@ -1,0 +1,95 @@
+.Top-wrapper {
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+.profil-card-TopServeur:nth-child(3) {
+    order: 3;
+}
+
+.profil-card-TopServeur.First-Serveur {
+    order: 2;
+}
+
+.profil-card-TopServeur {
+    width: 45%;
+    height: fit-content;
+    background-color: var(--main-color);
+    border-radius: var(--big-border-radius);
+    padding: var(--m-1) 0;
+    margin-bottom: var(--m-2);
+}
+
+.profil-card-TopServeur:not(.First-Serveur) {
+    width: 25%;
+    background-color: white;
+    box-shadow: var(--big-drop-shadow), var(--reverse-big-drop-shadow);
+    border-radius: var(--big-border-radius);
+    padding: var(--m-1) 0;
+    margin-bottom: var(--m-2);
+}
+
+.profil-card-TopServeur.First-Serveur p:not(.summonerLevel) {
+    color: white;
+}
+
+/*=== Header card===*/
+.Summoner-icon {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    
+}
+
+.Summoner-icon img {
+    width: 100%;
+    border-radius: 100%;
+    box-shadow: var(--white-drop-shadow);
+}
+
+.profil-card-TopServeur .Summoner-icon p {
+    width: 70px;
+    height: 70px;
+    color: var(--main-font-color);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 100%;
+    box-shadow: var(--white-drop-shadow);
+}
+
+.profil-card-TopServeur:not(.First-Serveur) .Summoner-icon p {
+    color: white;
+    background-color: var(--main-color);
+    box-shadow: var(--drop-shadow);
+}
+
+/*===Body Card ===*/
+
+.summoner-info-TopServeur .summonerName {
+    font-weight: var(--font-semi-bold);
+}
+
+
+/*=== Footer card ===*/
+
+.footer-card-TopServeur {
+    width: 100%;
+}
+
+.footer-card-TopServeur .graph {
+    height: 40px;
+    min-width: 40%;
+    border-radius: var(--default-border-radius);
+    margin: 0 var(--m-1);
+}
+
+.footer-card-TopServeur p {
+    width: 10ch;
+    text-align: center;
+}
+
+.summoner-info-TopServeur,.Summoner-icon, .body-card-TopServeur {
+    margin-bottom: var(--m-1);
+}

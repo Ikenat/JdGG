@@ -11,13 +11,12 @@
                             <p class="text">JDGG</p>
                         </div>
                     </div>
-                    <button class="shrink flex center" @click="ShrinkMenu">
+                </NuxtLink>
+                <button class="shrink flex center" @click="ShrinkMenu">
                         <svg class="shrinkSVG flex center" width="9" height="15" viewBox="0 0 16 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.4375 2.9375L5.89583 12.5L15.4375 22.0625L12.5 25L0 12.5L12.5 9.53674e-07L15.4375 2.9375Z" fill="#fff"/>
                         </svg>
-                    </button>
-
-                </NuxtLink>
+                </button>
             </div>
         </header>
 
